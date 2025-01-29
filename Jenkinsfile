@@ -4,6 +4,8 @@ def run(String service, String dockerImage, String template, String envDeploy) {
         sh """
             cd ${template}/${envDeploy};
             sed -i 's/_SERVICE_NAME_/${service}/g' *;
+            sed -i 's/_IMAGE_/${dockerImage}/g' *;
+
         """
         
     }
