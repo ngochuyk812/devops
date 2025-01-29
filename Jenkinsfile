@@ -15,7 +15,8 @@ def run(String service, String dockerImage, String template, String envDeploy) {
         sh """
             export KUBECONFIG=/root/devops/k8s-config/admin.config;
             kubectl get nodes;
-
+            cd ${template}/secret;
+            kubectl apply -n ${envDeploy} -f ${template}/secret/docker-hub-secret.yaml
             cd ${template}/${envDeploy};
             kubectl apply -n ${envDeploy} -f 03.deployment.yaml;
             kubectl get pods -n ${envDeploy};
