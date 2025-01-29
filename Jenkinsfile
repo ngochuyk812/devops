@@ -3,8 +3,8 @@ def run(String service, String dockerImage, String template, String envDeploy) {
         echo "Building project with Docker Image: ${dockerImage} and Template: ${template}, ENV: ${envDeploy}"
         sh """
             cd ${template}/${envDeploy};
-            sed -i 's/_SERVICE_NAME_/${service}/g' *;
-            sed -i 's/_IMAGE_/${dockerImage}/g' *;
+            sed -i 's|_SERVICE_NAME_|${service}|g' *;
+            sed -i 's|_IMAGE_|${dockerImage}|g' *;
 
         """
         
