@@ -2,6 +2,7 @@ def run(String dockerImage, String language) {
     stage('Build Template') {
         echo "Building project with Docker Image: ${dockerImage} and Language: ${language}"
         sh """
+            ls -la;
             cd ${language};
             ls -la;
         """
