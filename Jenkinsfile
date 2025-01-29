@@ -5,7 +5,7 @@ def run(String service, String dockerImage, String root, String lang, String env
             cd ${root}/${lang}/${envDeploy};
             sed -i 's|_SERVICE_NAME_|${service}|g' *;
             sed -i 's|_IMAGE_|${dockerImage}|g' *;
-
+            sed -i 's|_NAMESPACE_|${envDeploy}|g' *;
         """
         
     }
@@ -19,7 +19,7 @@ def run(String service, String dockerImage, String root, String lang, String env
             kubectl apply -n ${envDeploy} -f ${root}/secret/docker-hub-secret.yaml
 
             cd ${root}/${lang}/${envDeploy};
-            kubectl apply -n ${envDeploy} -f 03.deployment.yaml;
+            kubectl apply -n ${envDeploy} -f .;
             kubectl get pods -n ${envDeploy};
         """
     }
