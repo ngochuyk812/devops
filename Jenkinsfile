@@ -7,11 +7,12 @@ def run(String service, String dockerImage, String root, String lang, String env
                 mkdir -p ${forder};
             fi
 
-            cp -rn ${root}template/${envDeploy}/* ${forder};
+            cp -rn ${root}/template/${envDeploy}/* ${forder};
             
         """
         script {
             withCredentials([string(credentialsId: 'GithubSecret', variable: 'TOKEN')]) {
+                sh "ls"
                 sh "cd ${root}"
                 sh 'git add -A'
                 sh "git commit -m \"Update template deploy ${lang}-${envDeploy}\""
