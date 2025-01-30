@@ -12,12 +12,13 @@ def run(String service, String dockerImage, String root, String lang, String env
         """
         script {
             withCredentials([string(credentialsId: 'GithubSecret', variable: 'TOKEN')]) {
-                sh "ls"
-                sh "cd ${root}"
                 sh """
+                    ls
+                    rm -rf .git
+                    cd ${root}
                     git config --global user.email "ci-cd@nnh.com"
                     git config --global user.name "ci-cd"
-                    git add .
+                    git add .   
                     git commit -m "Update template deploy ${DOCKER_NAME_IMAGE}"
                     git push origin develop
                 """
