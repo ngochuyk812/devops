@@ -19,7 +19,7 @@ def run(String service, String dockerImage, String root, String lang, String env
                     git config --global user.name "ci-cd"
                     git add .
                     git commit -m "Update template deploy ${DOCKER_NAME_IMAGE}"
-                    git push
+                    git push origin develop
                 """
             }
         }
