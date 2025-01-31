@@ -1,5 +1,5 @@
 def run(String service, String dockerImage, String root, String lang, String envDeploy) {
-    def forder = "${root}/deploy/${lang}/${envDeploy}";
+    def forder = "${root}/deploy/${service}/${envDeploy}";
     stage('Build Template') {
         echo "Building project with Docker Image: ${dockerImage} and Template: ${root}/${lang}, ENV: ${envDeploy}"
         sh """
