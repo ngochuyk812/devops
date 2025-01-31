@@ -9,15 +9,15 @@ metadata:
     # nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
     # nginx.ingress.kubernetes.io/ssl-redirect: "false"
     # nginx.ingress.kubernetes.io/use-regex: "true"
-    # nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   ingressClassName: nginx
   rules:
   - host: _SERVICE_NAME_.dev.local
     http:
       paths:
-      - path: /_SERVICE_NAME_-service
-        pathType: Prefix
+      - path: /_SERVICE_NAME_-service(/|$)(.*)
+        pathType: ImplementationSpecific
         backend:
           service:
             name: _SERVICE_NAME_-service
