@@ -16,7 +16,7 @@ spec:
   - host: _SERVICE_NAME_.dev.local
     http:
       paths:
-      - path: /
+      - path: /_SERVICE_NAME_-service
         pathType: Prefix
         backend:
           service:
