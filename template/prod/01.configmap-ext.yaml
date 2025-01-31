@@ -1,6 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: _SERVICE_NAME_-config-ext
-data:
-  T: "T"
