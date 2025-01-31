@@ -13,7 +13,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: _SERVICE_NAME_.dev.local
+  - host: webapi.dev.local
     http:
       paths:
       - path: /_SERVICE_NAME_-service(/|$)(.*)
